@@ -1,5 +1,5 @@
 #!/bin/bash
-# Info   : install tools for ubuntu 14.04 for px4
+# Info   : install tools on ubuntu 14.04.5 for px4
 # Author : wangbo                            
 # CTime  : 2017.07.11 
 
@@ -129,11 +129,11 @@ sudo sed 's/GSSAPIAuthentication yes/GSSAPIAuthentication no/' -i /etc/ssh/ssh_c
 sudo su -$USER_NAME
 mkdir -p ~/src
 cd ~/src
-git clone https://github.com/PX4/Firmware.git
+#git clone https://github.com/PX4/Firmware.git
+git clone https://github.com/fb-vtol/Firmware.git
 cd Firmware
 git submodule update --init --recursive
 cd ../..
-#sudo chmod 777 -R src
 sudo chmod a+w -R src
 sudo chmod a+x -R src
 
