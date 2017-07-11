@@ -7,6 +7,12 @@
 #---------执行安装脚本程序命令为: sh ubuntu_1404_px4.sh 或者 ./ubuntu_1404_px4.sh ---------------------
 #-------------------------------------------
 
+#ubuntu由于使用了/bin/sh 导致找不到pushd命令
+#切换回/bin/bash即可，但是我在shell中声明#!/bin/bash还是继续报错
+sudo cp /bin/sh /bin/sh_backup
+sudo rm -f /bin/sh
+sudo ln -s /bin/bash /bin/sh
+
 #设置github用户名，这个每个人需要修改
 GIT_NAME=fb_vtol
 GIT_EMAIL=fb_vtol@163.com
@@ -94,9 +100,11 @@ sudo apt-get install openjdk-8-jdk openjdk-8-jre -y
 
 #删除掉Ubuntu自带的串口管理模块
 sudo apt-get remove modemmanager -y
+sudo apt-get autoremove
 
 #删除ubuntu14.04本身自带的arm-none-eabi-gcc
 sudo apt-get remove gcc-arm-none-eabi gdb-arm-none-eabi binutils-arm-none-eabi -y
+sudo apt-get autoremove
 sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa -y
 sudo apt-get update
 
@@ -126,7 +134,8 @@ git config --global user.email "$GIT_EMAIL"
 sudo cp /etc/ssh/ssh_config /etc/ssh/ssh_config_backup_$(date +%s)
 sudo sed 's/GSSAPIAuthentication yes/GSSAPIAuthentication no/' -i /etc/ssh/ssh_config
 
-sudo su -$USER_NAME
+#sudo su -$USER_NAME
+cd ~
 mkdir -p ~/src
 cd ~/src
 #git clone https://github.com/PX4/Firmware.git
