@@ -136,14 +136,14 @@ sudo apt-get install python-serial openocd \
     python-empy -y
 sudo apt-get autoremove -y
 
-#pushd .
-#cd ~
-#wget https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q2-update/+download/gcc-arm-none-eabi-5_4-2016q2-20160622-linux.tar.bz2
-#tar -jxf gcc-arm-none-eabi-5_4-2016q2-20160622-linux.tar.bz2
-#exportline="export PATH=$HOME/gcc-arm-none-eabi-5_4-2016q2/bin:$PATH"
-#if grep -Fxq "$exportline" ~/.profile; then echo nothing to do ; else echo $exportline >> ~/.profile; fi
-#. ~/.profile
-#popd
+pushd .
+cd ~
+wget https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q2-update/+download/gcc-arm-none-eabi-5_4-2016q2-20160622-linux.tar.bz2
+tar -jxf gcc-arm-none-eabi-5_4-2016q2-20160622-linux.tar.bz2
+exportline="export PATH=$HOME/gcc-arm-none-eabi-5_4-2016q2/bin:$PATH"
+if grep -Fxq "$exportline" ~/.profile; then echo nothing to do ; else echo $exportline >> ~/.profile; fi
+. ~/.profile
+popd
 #因为安装的是64位的Ubuntu，所以需要安装下面的lsb-core
 sudo apt-get install lsb-core
 sudo apt-get autoremove -y
