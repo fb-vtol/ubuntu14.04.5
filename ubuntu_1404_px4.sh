@@ -1,5 +1,5 @@
 #!/bin/bash
-# Info   : install tools on ubuntu 14.04.5 for px4
+# Info   : install tools on ubuntu 64bit 14.04.5 for px4
 # Author : wangbo                            
 # CTime  : 2017.07.11 
 
@@ -122,6 +122,8 @@ exportline="export PATH=$HOME/gcc-arm-none-eabi-5_4-2016q2/bin:$PATH"
 if grep -Fxq "$exportline" ~/.profile; then echo nothing to do ; else echo $exportline >> ~/.profile; fi
 . ~/.profile
 popd
+#因为安装的是64位的Ubuntu，所以需要安装下面的lsb-core
+sudo apt-get install lsb-core
 arm-none-eabi-gcc --version
 echo -e "Finish install gcc-arm-none-eabi"
 
