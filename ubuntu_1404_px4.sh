@@ -84,6 +84,8 @@ echo -e "Start install Ninja\n\n"
 sudo add-apt-repository ppa:george-edison55/cmake-3.x -y
 sudo apt-get update
 sudo apt-get install python-argparse git-core wget zip python-empy qtcreator cmake build-essential genromfs -y
+#出现这个问题couldn't find python module jinja2，解决如下：安装python-jinja2
+sudo apt-get install python-jinja2 -y
 
 #安装仿真工具simulation tools
 echo -e "Start install simulation tools\n\n"
